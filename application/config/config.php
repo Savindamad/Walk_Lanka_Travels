@@ -23,8 +23,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-//$config['base_url'] = 'http://walklanka.azurewebsites.net/';
-$config['base_url'] = 'http://localhost/WalkLanka/';
+$config['base_url'] = 'http://walklankatravels.azurewebsites.net/';
+//$config['base_url'] = 'http://localhost/WalkLanka/';
 
 /*
 |--------------------------------------------------------------------------
