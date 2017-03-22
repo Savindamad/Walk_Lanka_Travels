@@ -21,151 +21,180 @@
         ?>
 
         <header id="myCarousel" class="carousel slide">
-            <!-- Indicators -->
-            <ol class="carousel-indicators">
-                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                <li data-target="#myCarousel" data-slide-to="1"></li>
-                <li data-target="#myCarousel" data-slide-to="2"></li>
-            </ol>
-
             <!-- Wrapper for Slides -->
             <div class="carousel-inner">
-                <div class="item active">
-                    <!-- Set the first background image using inline CSS below. -->
-                    <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Slide One');"></div>
-                    <div class="carousel-caption">
-                        <h2>Caption 1</h2>
+                <?php
+                $x = 0;
+                foreach ($images->result() as $row) {
+                    ?>
+                    <div class="item <?php if ($x == 0) echo 'active'; ?>">
+                        <!-- Set the first background image using inline CSS below. -->
+                        <div class="fill" style="background-image:url('<?php echo $row->path ?>');"></div>
                     </div>
-                </div>
-                <div class="item">
-                    <!-- Set the second background image using inline CSS below. -->
-                    <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Slide Two');"></div>
-                    <div class="carousel-caption">
-                        <h2>Caption 2</h2>
-                    </div>
-                </div>
-                <div class="item">
-                    <!-- Set the third background image using inline CSS below. -->
-                    <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Slide Three');"></div>
-                    <div class="carousel-caption">
-                        <h2>Caption 3</h2>
-                    </div>
-                </div>
+                    <?php
+                    $x++;
+                }
+                ?>
             </div>
-
-            <!-- Controls -->
-            <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-                <span class="icon-prev"></span>
-            </a>
-            <a class="right carousel-control" href="#myCarousel" data-slide="next">
-                <span class="icon-next"></span>
-            </a>
-
         </header>
 
         <div class="container-fluid">
-            <div class="row">
+            <div class="row" style="margin-top:60px">
                 <div class="col-md-1"></div>
                 <div class="col-md-10">
                     <div class="row">
                         <div class="col-md-12">
-                            <h3>
-                                h3. Lorem ipsum dolor sit amet.
-                            </h3>
-                            <p>
-                                Lorem ipsum dolor sit amet, <strong>consectetur adipiscing elit</strong>. Proin massa magna, vulputate nec bibendum nec, posuere nec lacus. <small>Aliquam mi erat, aliquam vel luctus eu, pharetra quis elit. Nulla euismod ultrices massa, et feugiat ipsum consequat eu.</small>
+                            <h3>Tour Packages</h3>
+                            <p style="margin-bottom : 25px">
+                                <b>Pick a tour package that suits your preferences. We have carefully added the most attractive places to the list.</b>
                             </p>
                             <div class="row">
-                                <div class="col-md-4">
+                                <?php
+                                foreach ($packages->result() as $row) {
+                                    ?>
+                                    <div class="col-md-4 col-sm-12">
+                                        <div class="thumbnail">
+                                            <img alt="Bootstrap Thumbnail Second" src="<?php echo base_url($row->image); ?>" />
+                                            <div class="caption">
+                                                <h3><?php echo $row->name; ?></h3>
+                                                <p style="text-align: justify">
+                                                    <?php
+                                                    if (strlen($row->description) > 250) {
+                                                        $stringCut = substr($row->description, 0, 248);
+                                                        $string = substr($stringCut, 0, strrpos($stringCut, ' '));
+                                                        echo $string . '..';
+                                                    } else {
+                                                        echo substr($row->description, 0, 300);
+                                                    }
+                                                    ?>
+                                                </p>
+                                                <p><a class="btn btn-primary" href="<?php echo base_url('index.php/Package/') . $row->id; ?>">View more details</a></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <?php
+                                }
+                                ?>
+                            </div>
+                            <div class="row" style="margin-bottom: 30px; margin-left: 10px">
+                                <h4><a href="<?php echo base_url('index.php/Packages'); ?>">View more packages <span class="glyphicon glyphicon-circle-arrow-right"></span></a></h4>
+                            </div>
+                            <div class="row" style="margin-bottom: 40px;">
+                                <div class="col-md-6 col-sm-6">
                                     <div class="thumbnail">
-                                        <img alt="Bootstrap Thumbnail Second" src="http://lorempixel.com/output/city-q-c-600-200-1.jpg" />
-                                        <div class="caption">
-                                            <h3>
-                                                Thumbnail label
-                                            </h3>
-                                            <p>
-                                                Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
-                                            </p>
-                                            <p>
-                                                <a class="btn btn-primary" href="#">Action</a> <a class="btn" href="#">Action</a>
-                                            </p>
+                                        <h3 style="text-align: center">Plan Your Tour</h3>
+                                        <a href="<?php echo base_url('index.php/CustomPackage'); ?>">
+                                            <img alt="Bootstrap Thumbnail First" src="<?php echo base_url('public/images/other/planTour.png'); ?>" />
+                                        </a>
+                                        <div class="caption" style="background-color:#0A9EDE;">
+                                            <h5><b>Looking for a tailor made tour?</b><br> Go ahead and plan the tour yourself.</h5>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-6 col-sm-6">
                                     <div class="thumbnail">
-                                        <img alt="Bootstrap Thumbnail Third" src="http://lorempixel.com/output/sports-q-c-600-200-1.jpg" />
-                                        <div class="caption">
-                                            <h3>
-                                                Thumbnail label
-                                            </h3>
-                                            <p>
-                                                Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
-                                            </p>
-                                            <p>
-                                                <a class="btn btn-primary" href="#">Action</a> <a class="btn" href="#">Action</a>
-                                            </p>
+                                        <h3 style="text-align: center">Transport Reservation</h3>
+                                        <a href="<?php echo base_url('index.php/TourGuide'); ?>">
+                                            <img alt="Bootstrap Thumbnail First" src="<?php echo base_url('public/images/other/tourGuide.png'); ?>" />
+                                        </a>
+                                        <div class="caption" style="background-color:#0A9EDE;">
+                                            <h5><b>Are you just looking for transportation and tour guidance?</b><br> Let us arrange you a guided tour with comfortable transportation.</h4>
                                         </div>
-                                    </div>
+                                    </div>  
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <h3>
-                                h3. Lorem ipsum dolor sit amet.
-                            </h3>
-                            <p>
-                                Lorem ipsum dolor sit amet, <strong>consectetur adipiscing elit</strong>. Proin massa magna, vulputate nec bibendum nec, posuere nec lacus. <small>Aliquam mi erat, aliquam vel luctus eu, pharetra quis elit. Nulla euismod ultrices massa, et feugiat ipsum consequat eu.</small>
+                            <h3>Places To Visit</h3>
+                            <p style="margin-bottom : 25px">
+                                <b>Sri Lanka is an island blessed with beautiful destinations. Don't miss out any.</b>
                             </p>
                             <div class="row">
-                                <div class="col-md-3">
-                                    <div class="cuadro_intro_hover " style="background-color:#cccccc;">
-                                        <p style="text-align:center; margin-top:20px;">
-                                            <img src="http://trovacamporella.com/img/trovacamporella-fiat500.png" class="img-responsive" alt="">
-                                        </p>
-                                        <div class="caption">
-                                            <div class="blur"></div>
-                                            <div class="caption-text">
-                                                <a href="http://trovacamporella.com">
-                                                    <h3 style="border-top:2px solid white; border-bottom:2px solid white; padding:10px;">Place name</h3>
-                                                </a>
-                                                <p style="color: white; text-align: justify; margin-left: 5px; margin-right: 5px;">Loren ipsum dolor si amet ipsum dolor si amet ipsum dolor kjjk sjnjkc jjc jjk c jkjs jnkjs kjkj skjnkjs...</p>
+                                <?php
+                                foreach ($places->result() as $row) {
+                                    ?>
+                                    <div class="col-md-3 col-sm-6 col-xs-6" style="margin-top:15px">
+                                        <div class="cuadro_intro_hover " style="background-color:#0A9EDE;">
+                                            <p style="text-align:center; margin-top:20px;">
+                                                <img src="<?php echo base_url($row->image) ?>" class="img-responsive" alt="">
+                                            </p>
+                                            <div class="caption">
+                                                <div class="blur"></div>
+                                                <div class="caption-text">
+                                                    <a href="<?php echo base_url('index.php/Place/') . $row->id; ?>">
+                                                        <h3 style="border-top:2px solid white; border-bottom:2px solid white; padding:10px;"><?php echo $row->name; ?></h3>
+                                                    </a>
+                                                    <p style="color: white; text-align: justify; margin-left: 5px; margin-right: 5px;"><small>
+                                                            <?php
+                                                            if (strlen($row->description) > 220) {
+                                                                $stringCut = substr($row->description, 0, 218);
+                                                                $string = substr($stringCut, 0, strrpos($stringCut, ' '));
+                                                                echo $string . '..';
+                                                            } else {
+                                                                echo substr($row->description, 0, 220);
+                                                            }
+                                                            ?>
+                                                        </small>
+                                                    </p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                    <?php
+                                }
+                                ?>
                             </div>
                         </div>
                     </div>
+                    <div class="row" style="margin-top: 20px; margin-bottom: 30px; margin-left: 10px">
+                        <h4><a href="<?php echo base_url('index.php/Packages'); ?>">View more places <span class="glyphicon glyphicon-circle-arrow-right"></span></a></h4>
+                    </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <h3>
-                                h3. Lorem ipsum dolor sit amet.
-                            </h3>
-                            <p>
-                                Lorem ipsum dolor sit amet, <strong>consectetur adipiscing elit</strong>. Proin massa magna, vulputate nec bibendum nec, posuere nec lacus. <small>Aliquam mi erat, aliquam vel luctus eu, pharetra quis elit. Nulla euismod ultrices massa, et feugiat ipsum consequat eu.</small>
+                            <h3>Activities</h3>
+                            <p style="margin-bottom : 25px">
+                                <b>Want to get the best out of your holidays? Checkout the things you can do in Sri Lanka.</b>
                             </p>
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <div class="cuadro_intro_hover " style="background-color:#cccccc;">
-                                        <p style="text-align:center; margin-top:20px;">
-                                            <img src="http://trovacamporella.com/img/trovacamporella-fiat500.png" class="img-responsive" alt="">
-                                        </p>
-                                        <div class="caption">
-                                            <div class="blur"></div>
-                                            <div class="caption-text">
-                                                <a href="http://trovacamporella.com">
-                                                    <h3 style="border-top:2px solid white; border-bottom:2px solid white; padding:10px;">Activity name</h3>
-                                                </a>
-                                                <p style="color: white; text-align: justify; margin-left: 5px; margin-right: 5px;">Loren ipsum dolor si amet ipsum dolor si amet ipsum dolor kjjk sjnjkc jjc jjk c jkjs jnkjs kjkj skjnkjs...</p>
+                            <div class="row" style="margin-top: 10px;">
+                                <?php
+                                foreach ($activities->result() as $row) {
+                                    ?>
+                                    <div class="col-md-3 col-sm-6 col-xs-6" style="margin-top: 15px">
+                                        <div class="cuadro_intro_hover " style="background-color:#0A9EDE;">
+                                            <p style="text-align:center; margin-top:20px;">
+                                                <img src="<?php echo base_url($row->image); ?>" class="img-responsive" alt="">
+                                            </p>
+                                            <div class="caption">
+                                                <div class="blur"></div>
+                                                <div class="caption-text">
+                                                    <a href="http://trovacamporella.com">
+                                                        <h4 style="border-top:2px solid white; border-bottom:2px solid white; padding:20px;"><?php echo $row->name; ?></h4>
+                                                    </a>
+                                                    <p style="color: white; text-align: justify; margin-left: 5px; margin-right: 5px;">
+                                                        <?php
+                                                        if (strlen($row->description) > 150) {
+                                                            $stringCut = substr($row->description, 0, 148);
+                                                            $string = substr($stringCut, 0, strrpos($stringCut, ' '));
+                                                            echo $string . '..';
+                                                        } else {
+                                                            echo substr($row->description, 0, 150);
+                                                        }
+                                                        ?>
+                                                    </p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                    <?php
+                                }
+                                ?>
                             </div>
                         </div>
+                    </div>
+                    <div class="row" style="margin-top: 20px; margin-bottom: 60px; margin-left: 10px">
+                        <h4><a href="<?php echo base_url('index.php/Packages'); ?>">View more activities <span class="glyphicon glyphicon-circle-arrow-right"></span></a></h4>
                     </div>
                 </div>
                 <div class="col-md-1"></div>

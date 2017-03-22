@@ -34,7 +34,6 @@
 }
 .cuadro_intro_hover .caption-text{
     z-index: 10;
-    color: #fff;
     position: absolute;
     height: 300px;
     text-align: center;

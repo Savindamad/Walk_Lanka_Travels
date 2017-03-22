@@ -37,13 +37,15 @@
                                                 <label for="email">
                                                     Email address
                                                 </label>
-                                                <input type="email" class="form-control" id="email" />
+                                                <input type="email" class="form-control" id="email" onchange="email_change()"/>
                                             </div>
                                             <div class="form-group">
                                                 <label for="country">
                                                     Country
                                                 </label>
-                                                <select class="form-control bfh-countries" data-country="US" id="country"></select>
+                                                <select class="form-control bfh-countries" id="country">
+
+                                                </select>
                                             </div>
                                             <div class="form-group">
                                                 <label for="mobile">
@@ -55,7 +57,7 @@
                                                 <label for="numPersons">
                                                     Number of persons
                                                 </label>
-                                                <input type="number" class="form-control" min="1" max="30" value="1" id="numPersons"/>
+                                                <input type="number" class="form-control" id="numPersons" min="1" max="20" value="1" onchange="numPersons_change()"/>
                                             </div>
                                             <div class="form-group">
                                                 <label for="numDays">

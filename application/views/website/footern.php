@@ -40,9 +40,9 @@ if (isset($current) && $current == 'home') {
 }
 else {
     ?>
-    <div id="footerwrap">
-        <div class="container" style="margin-top: -60px; margin-bottom: -40px;">
-            <div class="row" style="margin-top: 40px">
+    <div id="footerwrap" style="height: 100px; bottom: 0; width: 100%;">
+        <div class="container">
+            <div class="row">
                 <div class="col-md-12">
                     <p style="text-align: center"><b>&copy; Walk Lanka travels</b></p>
                 </div>

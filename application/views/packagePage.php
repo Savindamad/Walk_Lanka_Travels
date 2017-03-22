@@ -47,13 +47,15 @@
                                                     <label for="email">
                                                         Email address
                                                     </label>
-                                                    <input type="email" class="form-control" id="email" />
+                                                    <input type="email" class="form-control" id="email" onchange="email_change()"/>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="country">
                                                         Country
                                                     </label>
-                                                    <select class="form-control bfh-countries" data-country="US" id="country"></select>
+                                                    <select class="form-control bfh-countries" id="country">
+                                                        
+                                                    </select>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="mobile">
@@ -76,25 +78,31 @@
                                                     <label for="numPersons">
                                                         Number of persons
                                                     </label>
-                                                    <input type="number" class="form-control" id="numPersons" min="1" max="30" value="1"/>
+                                                    <input type="number" class="form-control" id="numPersons" min="1" max="20" value="1" onchange="numPersons_change()"/>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="single">
                                                         Number of single rooms
                                                     </label>
-                                                    <input type="number" class="form-control" id="single" />
+                                                    <input type="number" class="form-control" id="single" min="0" max="20" value="0" onchange="single_change()"/>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="double">
                                                         Number of double rooms
                                                     </label>
-                                                    <input type="number" class="form-control" id="double" />
+                                                    <input type="number" class="form-control" id="double" min="0" max="10" value="0" onchange="double_change()"/>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="trible">
                                                         Number of triple rooms
                                                     </label>
-                                                    <input type="number" class="form-control" id="trible" />
+                                                    <input type="number" class="form-control" id="trible" min="0" max="10" value="0" onchange="trible_change()"/>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="trible">
+                                                        Arrival date
+                                                    </label>
+                                                    <input type="date" class="form-control" id="arrivalDate" min='1899-01-01' max='2000-13-13'/>
                                                 </div>
                                             </form>
                                         </div>
@@ -230,6 +238,8 @@
         <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
         <script src="http://maps.google.com/maps/api/js?key=AIzaSyBiLOyslTC14QS8xl906N-6AvpzOn7BEgg" type="text/javascript"></script>
         <script type="text/javascript" src="<?php echo base_url('public/other/js/map_package_places.js'); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('public/other/js/load_contries.js'); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('public/other/js/validate.js'); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('public/other/js/package_page.js'); ?>"></script>
     </body>
 </html>		

@@ -62,3 +62,5 @@ $route['Activities'] = 'ActivitiesController/index';
 $route['Reviews'] = 'ReviewsController/index';
 $route['TourGuide'] = 'TourGuideController/index';
 $route['CustomPackage'] = 'CustomPackageController/index';
+$route['PackageData/(:any)'] = 'PackageDataController/index/$1';
+$route['Submitted/(:any)'] = 'SubmittedController/index/$1';

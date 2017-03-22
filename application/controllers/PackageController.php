@@ -117,7 +117,9 @@ class PackageController extends CI_Controller {
         echo json_encode($placesArray);
     }
 
-    public function setPackageData() {
+    public function setPackageData() {     
+        
+        //get form data
         $email = $this->input->post('email');
         $packageId = $this->input->post('packageId');
         $country = $this->input->post('country');
@@ -130,21 +132,50 @@ class PackageController extends CI_Controller {
         $placesInfo = $this->input->post('placesInfo');
         $roomCodition = $this->input->post('roomCodition');
         
-        $arry = array('package_id'=>$packageId,'email'=>$email,'mobile'=>$mobile,'num_persons'=>$numPersons,'num_single'=>$singleRooms,'num_double'=>$doubleRooms,'num_thrible'=>$tribleRomms);
-        
+        //load model
         $this->load->model('PackageModel');
-        $id = $this->PackageModel->setPackageData($arry);
         
+        $token = $this->PackageModel->getToken(); //get token
+        
+        //insert package data
+        $arry = array('package_id' => $packageId, 'email' => $email, 'mobile' => $mobile, 'num_persons' => $numPersons, 'num_single' => $singleRooms, 'num_double' => $doubleRooms, 'num_thrible' => $tribleRomms, 'token' => $token);
+        $id = $this->PackageModel->setPackageData($arry);
         $places = $this->PackageModel->getPlaces($packageId);
+        
         $hotelData = array();
-        $i=0;
-        foreach ($places->result() as $row){
+        $i = 0;
+        foreach ($places->result() as $row) {
             echo "$packageId $id $hotelInfo[$i] $row->num_days $row->place_id $roomCodition[$i]";
-            $hotelData1 = array('package_id'=>$packageId,'package_data_id'=>$id,'hotel_id'=>$hotelInfo[$i],'num_days'=>$row->num_days,'place_id'=>$row->place_id,'room_condition'=>$roomCodition[$i]);
+            $hotelData1 = array('package_id' => $packageId, 'package_data_id' => $id, 'hotel_id' => $hotelInfo[$i], 'num_days' => $row->num_days, 'place_id' => $row->place_id, 'room_condition' => $roomCodition[$i]);
             $i++;
             $this->PackageModel->setPackageHotelData($hotelData1);
         }
+
+        //get package price
+        $price = $this->PackageModel->getPrice($id);
+        $message = "Hi, price $price your package details link ->" . base_url('index.php/PackageData/') . $token;
         
+        //send mail
+//        $ci = get_instance();
+//        $ci->load->library('email');
+//        $ci->email->from('madsavidocs@gmail.com', 'savinda');
+//        $ci->email->to('savindamaddd@gmail.com');
+//        $ci->email->subject("Test Subject");
+//        $ci->email->message($message);
+//        $ci->email->attach(base_url('public/pdf/company/WalkLankaTravels.pdf'));
+//        $ci->email->send();
+        
+        
+//        $this->load->helper('url');
+//        
+//        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+//        $charactersLength = strlen($characters);
+//        $randomString = '';
+//        for ($i = 0; $i < 5; $i++) {
+//            $randomString .= $characters[rand(0, $charactersLength - 1)];
+//        }
+//        $randomString .='1';
+//        redirect('resposeSubmittedPage');
     }
 
 }

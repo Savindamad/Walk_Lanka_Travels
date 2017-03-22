@@ -28,7 +28,7 @@
                                     <div class="col-md-1"></div>
                                     <div class="col-md-10">
                                         <h3><b>Basic details</b></h3>
-                                        <p><b>Fill in the basic contact details and tour details below</b></p><br>
+                                        <p style="text-align: justify"><b>Fill in the basic contact details and tour details below</b></p><br>
                                     </div>
                                 </div>
                             </div>
@@ -43,13 +43,13 @@
                                                 <label for="email">
                                                     Email address
                                                 </label>
-                                                <input type="email" class="form-control" id="email" />
+                                                <input type="email" class="form-control" id="email" onchange="email_change()"/>
                                             </div>
                                             <div class="form-group">
                                                 <label for="country">
                                                     Country
                                                 </label>
-                                                <select class="form-control bfh-countries" data-country="US" id="country"></select>
+                                                <select class="form-control bfh-countries" id="country"></select>
                                             </div>
                                             <div class="form-group">
                                                 <label for="mobile">
@@ -72,7 +72,7 @@
                                                 <label for="numPersons">
                                                     Number of persons
                                                 </label>
-                                                <input type="number" min="1" max="30" class="form-control" id="numPersons"  value="1"/>
+                                                <input type="number" min="1" max="20" class="form-control" id="numPersons"  value="1" onchange="numPersons_change()"/>
                                             </div>
                                             <div class="form-group">
                                                 <label for="numDays">
@@ -93,19 +93,19 @@
                                                 <label for="single">
                                                     Number of single rooms
                                                 </label>
-                                                <input type="number" class="form-control" id="single" />
+                                                <input type="number" class="form-control" id="single" min="0" max="20" value="0" onchange="single_change()"/>
                                             </div>
                                             <div class="form-group">
                                                 <label for="double">
                                                     Number of double rooms
                                                 </label>
-                                                <input type="number" class="form-control" id="double" />
+                                                <input type="number" class="form-control" id="double" min="0" max="10" value="0" onchange="double_change()"/>
                                             </div>
                                             <div class="form-group">
                                                 <label for="trible">
                                                     Number of triple rooms
                                                 </label>
-                                                <input type="number" class="form-control" id="trible" />
+                                                <input type="number" class="form-control" id="trible" min="0" max="10" value="0" onchange="trible_change()"/>
                                             </div>
                                             <div class="form-group">
                                                 <label for="comment">Message</label>
@@ -117,7 +117,7 @@
                             </div>
                         </div>
                         <div class="row" style="margin : 30">
-                            <p><b>Use the message box above, to send us a message with your basic preferences about the tour. Tell us the places you like to visit and your accommodations plans. Our agent will contact you through e-mail to assist you plan the tour, the way you wish.</b></p><br>
+                            <p style="text-align: justify"><b>Use the message box above, to send us a message with your basic preferences about the tour. Tell us the places you like to visit and your accommodations plans. Our agent will contact you through e-mail to assist you plan the tour, the way you wish.</b></p><br>
                         </div>
                     </div>
                 </div>
@@ -131,7 +131,7 @@
                             <div class="col-md-1"></div>
                             <div class="col-md-11">
                                 <h3><b>Places and accommodation details</b></h3>
-                                <p><b>Filling this form is optional. You can add places you like to visit with the accommodation preferences, so we can plan your tour, the exact way you dream of. Instead, you can fill the message box above as well, with the tour details.</b></p><br>    
+                                <p style="text-align: justify"><b>Filling this form is optional. You can add places you like to visit with the accommodation preferences, so we can plan your tour, the exact way you dream of. Instead, you can fill the message box above as well, with the tour details.</b></p><br>    
                             </div>
                         </div>
                     </div>
@@ -210,7 +210,7 @@
                                         Check If you fill the option form
                                     </label>
                                 </div>
-                                <p><b><br>Submit the filled form. Our agent will contact you soon through e-mail, with the tour details.</b></p><br>    
+                                <p style="text-align: justify"><b><br>Submit the filled form. Our agent will contact you soon through e-mail, with the tour details.</b></p><br>    
                             </div>
                         </div>
                     </div>
