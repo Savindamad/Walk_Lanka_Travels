@@ -104,9 +104,9 @@ function changeNumDays(numDays) {
         } else {
             document.getElementById("numDays").value = 30;
             if (numDaysPrvInt != 30) {
-                
+
                 var numDaysAdd = 30 - numDaysPrv;
-                
+
                 $.ajax({
                     url: 'CustomPackageController/getDayPlaceHotels',
                     type: 'POST',
@@ -159,15 +159,20 @@ function submitFunc() {
         var singleRooms = parseInt(document.getElementById("single").value);
         var doubleRooms = parseInt(document.getElementById("double").value);
         var tribleRomms = parseInt(document.getElementById("trible").value);
+        var arrivalDate = document.getElementById("arrivalDate").value;
         var message = document.getElementById("message").value;
+
+        var places = [];
+        var hotels = [];
+        var rooms = [];
 
         var placesInfo = [];
         if (document.getElementById('optionalFormStatus').checked) {
             for (var i = 1; i <= numDays; i++) {
                 var temp = [];
-                temp['place'] = document.getElementById("p_" + i).value;
-                temp['hotel'] = document.getElementById("h_" + i).value;
-                temp['room'] = document.getElementById("r_" + i).value;
+                places[i - 1] = document.getElementById("p_" + i).value;
+                hotels[i - 1] = document.getElementById("h_" + i).value;
+                rooms[i - 1] = document.getElementById("r_" + i).value;
 
                 placesInfo[i - 1] = temp;
             }
@@ -176,6 +181,7 @@ function submitFunc() {
                 url: 'CustomPackageController/setCustomPackageData',
                 type: 'POST',
                 data: {
+                    status: '0',
                     email: email,
                     country: country,
                     mobile: mobile,
@@ -184,8 +190,11 @@ function submitFunc() {
                     singleRooms: singleRooms,
                     doubleRooms: doubleRooms,
                     tribleRomms: tribleRomms,
+                    arrivalDate: arrivalDate,
                     message: message,
-                    hotelInfo: placesInfo
+                    places: places,
+                    hotels: hotels,
+                    rooms: rooms
                 },
                 dataType: 'json',
                 cache: false,
@@ -194,23 +203,8 @@ function submitFunc() {
                 }
             });
 
-            var submitResult = '<div class="container-fluid" id="content" style="margin-top: 20px; margin-bottom: 20px;">\n\
-                                <div class="row">\n\
-                                    <div class="col-md-1">\n\
-                                    </div>\n\
-                                    <div class="col-md-10" style="background-color: #f6f6f6; border-radius: 5px;">\n\
-                                        <div class="row" style="margin-top: 10px;">\n\
-                                            <div class="col-md-12">\n\
-                                                <div class="row" style="margin : 20px">\n\
-                                                <h3>Response successfully submitted</h3>\n\
-                                                <p>Your response had been submitted. Our agent will contact you through email with further details. We will come up with the best tour plan for you, considering all youur preferences, at the best rate. Thank you for choosing Walk Lanka Travels as your tour partner. Have a nice day!</p>\n\
-                                                </div>\n\
-                                            </div>\n\
-                                        </div>\n\
-                                    </div>\n\
-                                </div>\n\
-                            </div>';
-            $('#content1').html(submitResult);
+            var response = '<div class="container-fluid" style="margin-top: 130px; margin-bottom: 140px;"><div class="row"><div class="col-md-1"></div><div class="col-md-10"><div class="alert alert-success alert-dismissable"><h4>Response successfully submitted</h4><p>Your response had been submitted. Our agent will contact you through email with further details. We will come up with the best travel reservation plan for you, considering all youur preferences, at the best rate. Thank you for choosing Walk Lanka Travels as your tour partner. We are looking forward to provide you with comfortable transporation with tour guidance.<br> Have a nice day!</p><a href="../Packages" class="btn btn-success" style="margin-top:20px">View packages</a></div></div><div class="col-md-1"></div></div></div>';
+            $('#content1').html(response);
             $('#content2').hide()
 
         } else {
@@ -218,6 +212,7 @@ function submitFunc() {
                 url: 'CustomPackageController/setCustomPackageData',
                 type: 'POST',
                 data: {
+                    staus: '1',
                     email: email,
                     country: country,
                     mobile: mobile,
@@ -226,6 +221,7 @@ function submitFunc() {
                     singleRooms: singleRooms,
                     doubleRooms: doubleRooms,
                     tribleRomms: tribleRomms,
+                    arrivalDate: arrivalDate,
                     message: message
                 },
                 dataType: 'json',
@@ -234,28 +230,31 @@ function submitFunc() {
                 }
             });
 
-            var submitResult = '<div class="container-fluid" id="content" style="margin-top: 20px; margin-bottom: 20px;">\n\
-                                <div class="row">\n\
-                                    <div class="col-md-1">\n\
-                                    </div>\n\
-                                    <div class="col-md-10" style="background-color: #f6f6f6; border-radius: 5px;">\n\
-                                        <div class="row" style="margin-top: 10px;">\n\
-                                            <div class="col-md-12">\n\
-                                                <div class="row" style="margin : 20px">\n\
-                                                <h3>Response successfully submitted</h3>\n\
-                                                <p>Your response had been submitted. Our agent will contact you through email with further details. We will come up with the best tour plan for you, considering all youur preferences, at the best rate. Thank you for choosing Walk Lanka Travels as your tour partner. Have a nice day!</p>\n\
-                                                </div>\n\
-                                            </div>\n\
-                                        </div>\n\
-                                    </div>\n\
-                                </div>\n\
-                            </div>';
-            $('#content1').html(submitResult);
+            var response = '<div class="container-fluid" style="margin-top: 130px; margin-bottom: 140px;"><div class="row"><div class="col-md-1"></div><div class="col-md-10"><div class="alert alert-success alert-dismissable"><h4>Response successfully submitted</h4><p>Your response had been submitted. Our agent will contact you through email with further details. We will come up with the best travel reservation plan for you, considering all youur preferences, at the best rate. Thank you for choosing Walk Lanka Travels as your tour partner. We are looking forward to provide you with comfortable transporation with tour guidance.<br> Have a nice day!</p><a href="../Packages" class="btn btn-success" style="margin-top:20px">View packages</a></div></div><div class="col-md-1"></div></div></div>';
+            $('#content1').html(response);
             $('#content2').hide();
         }
     }
 }
 
 function validateForm() {
-    return true;
+    if (!(email())) {
+        alert("Email");
+        return false;
+    } else if (!(mobile())) {
+        alert("Mobile");
+        return false;
+    } else if (!(numPersons())) {
+        return false;
+    } else if (!(numDays())) {
+        return false;
+    } else if (!(single())) {
+        return false;
+    } else if (!(double())) {
+        return false;
+    } else if (!(trible())) {
+        return false;
+    } else {
+        return true;
+    }
 }

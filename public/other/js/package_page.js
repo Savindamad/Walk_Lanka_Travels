@@ -52,6 +52,7 @@ function submitFunc(packageId, numPlaces) {
         var singleRooms = document.getElementById("single").value;
         var doubleRooms = document.getElementById("double").value;
         var tribleRomms = document.getElementById("trible").value;
+        var arrivalDate = document.getElementById("arrivalDate").value;
 
         var hotelInfo = [];
         var placesInfo = [];
@@ -89,7 +90,8 @@ function submitFunc(packageId, numPlaces) {
                         tribleRomms: tribleRomms,
                         hotelInfo: hotelInfo,
                         placesInfo: placesInfo,
-                        roomCodition: roomCodition
+                        roomCodition: roomCodition,
+                        arrivalDate: arrivalDate
                     },
                     success: function (result) {
 

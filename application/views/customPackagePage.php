@@ -108,8 +108,14 @@
                                                 <input type="number" class="form-control" id="trible" min="0" max="10" value="0" onchange="trible_change()"/>
                                             </div>
                                             <div class="form-group">
+                                                <label for="trible">
+                                                    Arrival date
+                                                </label>
+                                                <input type="date" class="form-control" id="arrivalDate" min='1899-01-01' max='2000-13-13'/>
+                                            </div>
+                                            <div class="form-group">
                                                 <label for="comment">Message</label>
-                                                <textarea class="form-control" id="message" rows="9"></textarea>
+                                                <textarea class="form-control" id="message" rows="5"></textarea>
                                             </div>
                                         </form>
                                     </div>
@@ -235,6 +241,8 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
         <script src="<?php echo base_url('public/assets/js/bootstrap.min.js'); ?>"></script>
         <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+        <script type="text/javascript" src="<?php echo base_url('public/other/js/load_contries.js'); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('public/other/js/validate.js'); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('public/other/js/custom_package_page.js') ?>"></script>
     </body>
 </html>

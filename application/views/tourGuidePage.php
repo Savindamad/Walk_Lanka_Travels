@@ -211,6 +211,8 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
         <script src="<?php echo base_url('public/assets/js/bootstrap.min.js'); ?>"></script>
         <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+        <script type="text/javascript" src="<?php echo base_url('public/other/js/load_contries.js'); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('public/other/js/validate.js'); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('public/other/js/tour_guide_page.js') ?>"></script>
     </body>
 </html>

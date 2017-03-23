@@ -60,7 +60,7 @@ class PackageModel extends CI_Model {
     }
 
     public function setPackageHotelData($arry) {
-        $this->db->insert('package_hotel_data', $arry);
+        $this->db->insert_batch('package_hotel_data', $arry);
     }
 
     public function getMaxId() {

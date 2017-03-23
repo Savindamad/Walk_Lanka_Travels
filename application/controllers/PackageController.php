@@ -117,8 +117,8 @@ class PackageController extends CI_Controller {
         echo json_encode($placesArray);
     }
 
-    public function setPackageData() {     
-        
+    public function setPackageData() {
+
         //get form data
         $email = $this->input->post('email');
         $packageId = $this->input->post('packageId');
@@ -131,30 +131,31 @@ class PackageController extends CI_Controller {
         $hotelInfo = $this->input->post('hotelInfo');
         $placesInfo = $this->input->post('placesInfo');
         $roomCodition = $this->input->post('roomCodition');
-        
+        $arrivalDate = $this->input->post('arrivalDate');
+
         //load model
         $this->load->model('PackageModel');
-        
+
         $token = $this->PackageModel->getToken(); //get token
-        
         //insert package data
-        $arry = array('package_id' => $packageId, 'email' => $email, 'mobile' => $mobile, 'num_persons' => $numPersons, 'num_single' => $singleRooms, 'num_double' => $doubleRooms, 'num_thrible' => $tribleRomms, 'token' => $token);
+        $arry = array('package_id' => $packageId, 'email' => $email, 'mobile' => $mobile, 'country' => $country, 'num_persons' => $numPersons, 'num_single' => $singleRooms, 'num_double' => $doubleRooms, 'num_thrible' => $tribleRomms, 'arrival_date' => $arrivalDate, 'token' => $token);
         $id = $this->PackageModel->setPackageData($arry);
         $places = $this->PackageModel->getPlaces($packageId);
-        
+
         $hotelData = array();
         $i = 0;
         foreach ($places->result() as $row) {
             echo "$packageId $id $hotelInfo[$i] $row->num_days $row->place_id $roomCodition[$i]";
             $hotelData1 = array('package_id' => $packageId, 'package_data_id' => $id, 'hotel_id' => $hotelInfo[$i], 'num_days' => $row->num_days, 'place_id' => $row->place_id, 'room_condition' => $roomCodition[$i]);
+            $hotelData[] = $hotelData1;
             $i++;
-            $this->PackageModel->setPackageHotelData($hotelData1);
         }
+        $this->PackageModel->setPackageHotelData($hotelData);
 
         //get package price
         $price = $this->PackageModel->getPrice($id);
         $message = "Hi, price $price your package details link ->" . base_url('index.php/PackageData/') . $token;
-        
+
         //send mail
 //        $ci = get_instance();
 //        $ci->load->library('email');
@@ -164,8 +165,6 @@ class PackageController extends CI_Controller {
 //        $ci->email->message($message);
 //        $ci->email->attach(base_url('public/pdf/company/WalkLankaTravels.pdf'));
 //        $ci->email->send();
-        
-        
 //        $this->load->helper('url');
 //        
 //        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';

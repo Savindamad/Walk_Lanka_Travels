@@ -43,6 +43,7 @@ function submitFunc() {
                 url: 'TourGuideController/setTourGuideData',
                 type: 'POST',
                 data: {
+                    status: '0',
                     email: email,
                     country: country,
                     mobile: mobile,
@@ -59,29 +60,15 @@ function submitFunc() {
                 }
             });
 
-            var submitResult = '<div class="container-fluid" id="content" style="margin-top: 20px; margin-bottom: 20px;">\n\
-                                <div class="row">\n\
-                                    <div class="col-md-1">\n\
-                                    </div>\n\
-                                    <div class="col-md-10" style="background-color: #f6f6f6; border-radius: 5px;">\n\
-                                        <div class="row" style="margin-top: 10px;">\n\
-                                            <div class="col-md-12">\n\
-                                                <div class="row" style="margin : 20px">\n\
-                                                <h3>Response successfully submitted</h3>\n\
-                                                <p>Your response had been submitted. Our agent will contact you through email with further details. We will come up with the best travel reservation plan for you, considering all youur preferences, at the best rate. Thank you for choosing Walk Lanka Travels as your tour partner. We are looking forward to provide you with comfortable transporation with tour guidance. Have a nice day!</p>\n\
-                                                </div>\n\
-                                            </div>\n\
-                                        </div>\n\
-                                    </div>\n\
-                                </div>\n\
-                            </div>';
-            $('#content').html(submitResult);
+            var response = '<div class="container-fluid" style="margin-top: 130px; margin-bottom: 140px;"><div class="row"><div class="col-md-1"></div><div class="col-md-10"><div class="alert alert-success alert-dismissable"><h4>Response successfully submitted</h4><p>Your response had been submitted. Our agent will contact you through email with further details. We will come up with the best travel reservation plan for you, considering all youur preferences, at the best rate. Thank you for choosing Walk Lanka Travels as your tour partner. We are looking forward to provide you with comfortable transporation with tour guidance.<br> Have a nice day!</p><a href="../Packages" class="btn btn-success" style="margin-top:20px">View packages</a></div></div><div class="col-md-1"></div></div></div>';
+            $('#content').html(response);
 
         } else {
             $.ajax({
                 url: 'TourGuideController/setTourGuideData',
                 type: 'POST',
                 data: {
+                    status: '1',
                     email: email,
                     country: country,
                     mobile: mobile,
@@ -96,27 +83,24 @@ function submitFunc() {
                 }
             });
 
-            var submitResult = '<div class="container-fluid" id="content" style="margin-top: 20px; margin-bottom: 20px;">\n\
-                                <div class="row">\n\
-                                    <div class="col-md-1">\n\
-                                    </div>\n\
-                                    <div class="col-md-10" style="background-color: #f6f6f6; border-radius: 5px;">\n\
-                                        <div class="row" style="margin-top: 10px;">\n\
-                                            <div class="col-md-12">\n\
-                                                <div class="row" style="margin : 20px">\n\
-                                                <h3>Response successfully submitted</h3>\n\
-                                                <p>Your response had been submitted. Our agent will contact you through email with further details. We will come up with the best travel reservation plan for you, considering all youur preferences, at the best rate. Thank you for choosing Walk Lanka Travels as your tour partner. We are looking forward to provide you with comfortable transporation with tour guidance. Have a nice day!</p>\n\
-                                                </div>\n\
-                                            </div>\n\
-                                        </div>\n\
-                                    </div>\n\
-                                </div>\n\
-                            </div>';
-            $('#content').html(submitResult);
+            var response = '<div class="container-fluid" style="margin-top: 130px; margin-bottom: 140px;"><div class="row"><div class="col-md-1"></div><div class="col-md-10"><div class="alert alert-success alert-dismissable"><h4>Response successfully submitted</h4><p>Your response had been submitted. Our agent will contact you through email with further details. We will come up with the best travel reservation plan for you, considering all youur preferences, at the best rate. Thank you for choosing Walk Lanka Travels as your tour partner. We are looking forward to provide you with comfortable transporation with tour guidance.<br> Have a nice day!</p><a href="../Packages" class="btn btn-success" style="margin-top:20px">View packages</a></div></div><div class="col-md-1"></div></div></div>';
+            $('#content').html(response);
         }
     }
 }
 
 function validateForm() {
-    return true;
+    if (!(email())) {
+        alert("Email");
+        return false;
+    } else if (!(mobile())) {
+        alert("Mobile");
+        return false;
+    } else if (!(numPersons())) {
+        return false;
+    } else if (!(numDays())) {
+        return false;
+    } else {
+        return true;
+    }
 }

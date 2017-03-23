@@ -85,6 +85,17 @@ function trible() {
     }
 }
 
+function numDays() {
+    var x = document.getElementById("numDays").value;
+    if (x < 2) {
+        return false;
+    } else if (x > 30) {
+        return false;
+    } else {
+        return true;
+    }
+}
+
 function email_change() {
     var x = document.getElementById("email").value;
     var atpos = x.indexOf("@");
@@ -133,9 +144,11 @@ function trible_change() {
     }
 }
 
-
-
-
-
-
-
+//function numDays_change() {
+//    var x = document.getElementById("numDays").value;
+//    if (x < 2) {
+//        document.getElementById("trible").value = 2;
+//    } else if (x > 30) {
+//        document.getElementById("trible").value = 30;
+//    }
+//}
