@@ -42,4 +42,15 @@ class TourGuideModel extends CI_Model {
         return $randomString;
     }
 
+    function setTourGuideData($arry) {
+        $this->db->insert('tour_guide_data', $arry);
+        $insert_id = $this->db->insert_id();
+
+        return $insert_id;
+    }
+    
+    function setTourGuidePlaceData($arry){
+        $this->db->insert_batch('tour_guide_place_data', $arry); 
+    }
+
 }

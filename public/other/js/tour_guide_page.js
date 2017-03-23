@@ -33,10 +33,11 @@ function submitFunc() {
         var numPlaces = parseInt(document.getElementById("numPlaces").value);
         var message = document.getElementById("message").value;
 
-        var placesInfo = [];
+        var places = [];
         if (document.getElementById('optionalFormStatus').checked) {
-            for (var i = 1; i <= numDays; i++) {
-                placesInfo[i - 1] = document.getElementById("p_" + i).value;
+            for (var i = 1; i <= numPlaces; i++) {
+                var placeId = document.getElementById("p_" + i).value;
+                places[i - 1] = placeId;
             }
 
             $.ajax({
@@ -51,7 +52,7 @@ function submitFunc() {
                     numDays: numDays,
                     numPlaces: numPlaces,
                     message: message,
-                    placeInfo: placesInfo
+                    places: places
                 },
                 dataType: 'json',
                 cache: false,

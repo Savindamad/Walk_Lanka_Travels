@@ -155,7 +155,7 @@ class CustomPackageController extends CI_Controller {
             $arry1 = array();
             for ($i = 0; $i < sizeof($hotels); $i++) {
                 $dayNum = $i + 1;
-                $arry2 = array('place_id' => $places[$i], 'hotel_id' => $hotels[$i], 'room_condition' => $rooms[$i], 'day_num' => $dayNum);
+                $arry2 = array('custom_package_id' => $id, 'place_id' => $places[$i], 'hotel_id' => $hotels[$i], 'room_condition' => $rooms[$i], 'day_num' => $dayNum);
                 $arry1[] = $arry2;
             }
 

@@ -33,7 +33,7 @@ class TourGuideController extends CI_Controller {
                                                         <label for="p_' . $i . '">
                                                             Select place
                                                         </label>
-                                                        <select class="form-control" id="p_1">';
+                                                        <select class="form-control" id="p_'.$i.'">';
             foreach ($places->result() as $row) {
                 echo "<option value='$row->id'>$row->name</option>";
             }
@@ -62,28 +62,30 @@ class TourGuideController extends CI_Controller {
         $message = $this->input->post('message');
 
         //load model
-        $this->load->model('CustomPackageModel');
+        $this->load->model('TourGuideModel');
 
-        $token = $this->CustomPackageModel->getToken(); //get token
+        $token = $this->TourGuideModel->getToken(); //get token
 
 
         if ($status == '0') {
             $places = $this->input->post('places');
 
-            $arry = array('email' => $email, 'mobile' => $mobile, 'country' => $country, 'num_persons' => $numPersons, 'num_days' => $numDays, 'message' => $message, 'type' => 'Y', 'token' => $token);
-            $id = $this->CustomPackageModel->setCustomPackageData($arry);
+            $arry = array('email' => $email, 'mobile' => $mobile, 'country' => $country, 'num_persons' => $numPersons, 'num_days' => $numDays, 'num_places' => $numPlaces, 'message' => $message, 'type' => 'Y', 'token' => $token);
+            $id = $this->TourGuideModel->setTourGuideData($arry);
+
             $arry1 = array();
-            for ($i = 0; $i < sizeof($hotels); $i++) {
-                $dayNum = $i + 1;
-                $arry2 = array('place_id' => $places[$i], 'hotel_id' => $hotels[$i], 'room_condition' => $rooms[$i], 'day_num' => $dayNum);
+            for ($i = 0; $i < sizeof($places); $i++) {
+                $dayNo = $i+1;
+                $arry2 = array('tour_guide_data_id'=>$id, 'place_id'=>$places[$i],'day_num'=>$dayNo);
                 $arry1[] = $arry2;
             }
-
-            $this->CustomPackageModel->setCustomPackageHotelPlaceData($arry1);
+            
+            $this->TourGuideModel->setTourGuidePlaceData($arry1);
+            
         } else {
 
-            $arry = array('email' => $email, 'mobile' => $mobile, 'country' => $country, 'num_persons' => $numPersons, 'num_days' => $numDays, 'message' => $message, 'type' => 'N', 'token' => $token);
-            $id = $this->CustomPackageModel->setCustomPackageData($arry);
+            $arry = array('email' => $email, 'mobile' => $mobile, 'country' => $country, 'num_persons' => $numPersons, 'num_days' => $numDays, 'num_places' => $numPlaces, 'message' => $message, 'type' => 'N', 'token' => $token);
+            $id = $this->TourGuideModel->setTourGuideData($arry);
         }
 
         //send mail
