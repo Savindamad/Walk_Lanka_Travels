@@ -15,10 +15,10 @@ if (isset($current) && $current == 'home') {
                     <p>
                         <b>Email :</b> <small><?php if (isset($email)) echo $email; ?></small><br>
                         <b>Phone number :</b> <small><?php if (isset($phone)) echo $phone; ?></small><br><br>
-                        <a href="#"><i class="fa fa-facebook"></i></a>
-                        <a href="#"><i class="fa fa-twitter"></i>
-                        </a><a href="#"><i class="fa fa-instagram"></i></a>
-                        <a href="#"><i class="fa fa-tumblr"></i></a>                    
+                        <a href="https://www.facebook.com/savindak"><i class="fa fa-facebook"></i></a>
+                        <a href="https://twitter.com/Savindam"><i class="fa fa-twitter"></i>
+                        </a><a href="https://www.instagram.com/savindamad/"><i class="fa fa-instagram"></i></a>
+                        <a href="https://www.tumblr.com/"><i class="fa fa-tumblr"></i></a>                    
                     </p>
                 </div>
             </div>

@@ -61,7 +61,7 @@ function submitFunc() {
                 }
             });
 
-            var response = '<div class="container-fluid" style="margin-top: 130px; margin-bottom: 140px;"><div class="row"><div class="col-md-1"></div><div class="col-md-10"><div class="alert alert-success alert-dismissable"><h4>Response successfully submitted</h4><p>Your response had been submitted. Our agent will contact you through email with further details. We will come up with the best travel reservation plan for you, considering all youur preferences, at the best rate. Thank you for choosing Walk Lanka Travels as your tour partner. We are looking forward to provide you with comfortable transporation with tour guidance.<br> Have a nice day!</p><a href="../Packages" class="btn btn-success" style="margin-top:20px">View packages</a></div></div><div class="col-md-1"></div></div></div>';
+            var response = '<div class="container-fluid" style="margin-top: 130px; margin-bottom: 140px;"><div class="row"><div class="col-md-1"></div><div class="col-md-10"><div class="alert alert-success alert-dismissable"><h4>Response successfully submitted</h4><p>Your response had been submitted. Our agent will contact you through email with further details. We will come up with the best travel reservation plan for you, considering all youur preferences, at the best rate. Thank you for choosing Walk Lanka Travels as your tour partner. We are looking forward to provide you with comfortable transporation with tour guidance.<br> Have a nice day!</p><a href="../index.php/TourGuide" class="btn btn-success" style="margin-top:20px">Submit another response</a></div></div><div class="col-md-1"></div></div></div>';
             $('#content').html(response);
 
         } else {
@@ -84,7 +84,7 @@ function submitFunc() {
                 }
             });
 
-            var response = '<div class="container-fluid" style="margin-top: 130px; margin-bottom: 140px;"><div class="row"><div class="col-md-1"></div><div class="col-md-10"><div class="alert alert-success alert-dismissable"><h4>Response successfully submitted</h4><p>Your response had been submitted. Our agent will contact you through email with further details. We will come up with the best travel reservation plan for you, considering all youur preferences, at the best rate. Thank you for choosing Walk Lanka Travels as your tour partner. We are looking forward to provide you with comfortable transporation with tour guidance.<br> Have a nice day!</p><a href="../Packages" class="btn btn-success" style="margin-top:20px">View packages</a></div></div><div class="col-md-1"></div></div></div>';
+            var response = '<div class="container-fluid" style="margin-top: 130px; margin-bottom: 140px;"><div class="row"><div class="col-md-1"></div><div class="col-md-10"><div class="alert alert-success alert-dismissable"><h4>Response successfully submitted</h4><p>Your response had been submitted. Our agent will contact you through email with further details. We will come up with the best travel reservation plan for you, considering all youur preferences, at the best rate. Thank you for choosing Walk Lanka Travels as your tour partner. We are looking forward to provide you with comfortable transporation with tour guidance.<br> Have a nice day!</p><a href="../index.php/TourGuide" class="btn btn-success" style="margin-top:20px">Submit another response</a></div></div><div class="col-md-1"></div></div></div>';
             $('#content').html(response);
         }
     }
