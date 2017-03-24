@@ -12,7 +12,7 @@ class TourGuideModel extends CI_Model {
     public function getPlace($id) {
         $this->db->select('*');
         $this->db->from('place');
-        $this->db->from('id', $id);
+        $this->db->where('id', $id);
         $result = $this->db->get();
         return $result;
     }
@@ -51,6 +51,13 @@ class TourGuideModel extends CI_Model {
     
     function setTourGuidePlaceData($arry){
         $this->db->insert_batch('tour_guide_place_data', $arry); 
+    }
+    
+    function getMapLocations($ids){
+        $this->db->select('*');
+        $this->db->from('place');
+        $result = $this->db->get();
+        return $result;
     }
 
 }

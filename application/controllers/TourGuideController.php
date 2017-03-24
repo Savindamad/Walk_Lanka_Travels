@@ -99,5 +99,22 @@ class TourGuideController extends CI_Controller {
         $ci->email->attach(base_url('public/pdf/company/WalkLankaTravels.pdf'));
         $ci->email->send();
     }
+    
+    function getMapPlaces(){
+        
+        $this->load->model('TourGuideModel');
+        $placesInfo = $this->TourGuideModel->getMapLocations();
+        $loaction = array();
+        
+        foreach ($placesInfo->result() as $row){
+            $temp = array();
+            $temp[] = $row->name;
+            $temp[] = $row->latitude;
+            $temp[] = $row->longitude;
+            $loaction[] = $temp;
+        }
+        
+        echo json_encode($loaction);        
+    }
 
 }

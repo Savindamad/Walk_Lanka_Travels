@@ -21,6 +21,7 @@ function changeNumPlaces(numPlaces) {
         }
         document.getElementById("numPlaces1").value = numPlaces;
     }
+    
 }
 
 function submitFunc() {

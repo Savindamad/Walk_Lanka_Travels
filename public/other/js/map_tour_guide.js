@@ -1,89 +1,37 @@
-var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 8,
-    center: new google.maps.LatLng(7.8731, 80.7718),
-    mapTypeId: google.maps.MapTypeId.ROADMAP
+var allPlaces = [];
+$.ajax({
+    url: '../TourGuideController/getMapPlaces',
+    type: 'POST',
+    data: {
+    },
+    dataType: 'json',
+    cache: false,
+    success: function (locations) {
+        allPlaces = locations;
+    }
 });
 
-var infowindow = new google.maps.InfoWindow();
-
-var marker, i;
-var locations = [];
-
-function addPlace(id, placeId) {
-    var flag = 0;
-    for (i = 0; i < locations.length; i++) {
-        if (locations[i][0] == placeId) {
-            flag = 1;
-            break;
-        }
-    }
-
-    if (flag == 0) {
-        for (i = 0; i < locations.length; i++) {
-            if (locations[i][1] == id) {
-                for (j = 0; j < locations.length; j++) {
-                    if (locations[i][0] == locations[j][0] && j != i) {
-                        flag = 2;
-
-                        $.ajax({
-                            url: 'TourGuideController/getPlace',
-                            type: 'POST',
-                            dataType: 'json',
-                            cache: false,
-                            data: {
-                                placeId: placeId
-                            },
-                            success: function (result) {
-
-                            }
-                        });
-
-
-                        break;
-                        //add map
-                        //not remove
-                    }
-                }
-                if (flag == 0) {
-                    flag = 3
-
-                    $.ajax({
-                        url: 'TourGuideController/getPlace',
-                        type: 'POST',
-                        dataType: 'json',
-                        cache: false,
-                        data: {
-                            placeId: placeId
-                        },
-                        success: function (result) {
-
-                        }
-                    });
-                    //add map
-                    //remove map
-                    //remove array
-                }
+function loadMap() {
+    var locations = [];
+    var numPlaces = document.getElementById('numPlaces').value;
+    for (var i = 1; i <= numPlaces; i++) {
+        var placesId = document.getElementById('p_' + i).value;
+        for (var j = 0; j < allPlaces.length; j++) {
+            if(placesId==allPlaces[j][3]){
+                locations[i-1] = allPlaces[j];
             }
         }
-        if (flag == 0) {
-
-            $.ajax({
-                url: 'TourGuideController/getPlace',
-                type: 'POST',
-                dataType: 'json',
-                cache: false,
-                data: {
-                    placeId: placeId
-                },
-                success: function (result) {
-
-                }
-            });
-            //add array
-            //add map
-        }
     }
 
+    var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 8,
+        center: new google.maps.LatLng(7.8731, 80.7718),
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    });
+
+    var infowindow = new google.maps.InfoWindow();
+
+    var marker, i;
 
     for (i = 0; i < locations.length; i++) {
         marker = new google.maps.Marker({
