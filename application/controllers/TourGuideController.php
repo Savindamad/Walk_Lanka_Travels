@@ -33,7 +33,7 @@ class TourGuideController extends CI_Controller {
                                                         <label for="p_' . $i . '">
                                                             Select place
                                                         </label>
-                                                        <select class="form-control" id="p_'.$i.'">';
+                                                        <select class="form-control" id="p_'.$i.'" onchange="loadMap()">';
             foreach ($places->result() as $row) {
                 echo "<option value='$row->id'>$row->name</option>";
             }
@@ -111,6 +111,7 @@ class TourGuideController extends CI_Controller {
             $temp[] = $row->name;
             $temp[] = $row->latitude;
             $temp[] = $row->longitude;
+            $temp[] = $row->id;
             $loaction[] = $temp;
         }
         

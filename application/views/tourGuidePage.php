@@ -74,7 +74,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="message">Message</label>
-                                                <textarea class="form-control" id="message" rows="4"></textarea>
+                                                <textarea class="form-control" id="message" rows="7"></textarea>
                                             </div>
                                         </form>
                                     </div>
@@ -85,7 +85,7 @@
                                     <div class="col-md-1"></div>
                                     <div class="col-md-10">
                                         <div class="thumbnail">
-                                            <div id="map" style="width: 100%; height: 600px;"></div>
+                                            <div id="map" style="width: 100%; height: 670px;"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -145,7 +145,7 @@
                                                             <label for="p_1">
                                                                 Select place
                                                             </label>
-                                                            <select class="form-control" id="p_1">
+                                                            <select class="form-control" id="p_1" onchange="loadMap()">
                                                                 <?php
                                                                 foreach ($places->result() as $row) {
                                                                     echo "<option value='$row->id'>$row->name</option>";
@@ -211,8 +211,9 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
         <script src="<?php echo base_url('public/assets/js/bootstrap.min.js'); ?>"></script>
         <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+        <script src="http://maps.google.com/maps/api/js?key=AIzaSyBiLOyslTC14QS8xl906N-6AvpzOn7BEgg" type="text/javascript"></script>
         <script type="text/javascript" src="<?php echo base_url('public/other/js/load_contries.js'); ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('public/other/js/validate.js'); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('public/other/js/validate_1.js'); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('public/other/js/map_tour_guide.js'); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('public/other/js/tour_guide_page.js') ?>"></script>
     </body>

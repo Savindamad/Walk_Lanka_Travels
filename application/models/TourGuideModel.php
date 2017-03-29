@@ -53,7 +53,7 @@ class TourGuideModel extends CI_Model {
         $this->db->insert_batch('tour_guide_place_data', $arry); 
     }
     
-    function getMapLocations($ids){
+    function getMapLocations(){
         $this->db->select('*');
         $this->db->from('place');
         $result = $this->db->get();
