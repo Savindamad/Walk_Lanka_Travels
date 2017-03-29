@@ -1,6 +1,6 @@
 var allPlaces = [];
 $.ajax({
-    url: '../TourGuideController/getMapPlaces',
+    url: 'TourGuideController/getMapPlaces',
     type: 'POST',
     data: {
     },

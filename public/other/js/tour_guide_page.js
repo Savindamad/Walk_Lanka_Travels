@@ -1,3 +1,4 @@
+loadMap();
 function changeNumPlaces(numPlaces) {
     var numPlacesprv = parseInt(document.getElementById("numPlaces1").value);
 
@@ -13,6 +14,7 @@ function changeNumPlaces(numPlaces) {
             success: function (responseText) {
                 document.getElementById("numPlaces1").value = numPlaces;
                 $('#places').append($(responseText).hide().fadeIn(500));
+                loadMap();
             }
         });
     } else {
@@ -21,7 +23,6 @@ function changeNumPlaces(numPlaces) {
         }
         document.getElementById("numPlaces1").value = numPlaces;
     }
-    
 }
 
 function submitFunc() {
